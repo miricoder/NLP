@@ -296,14 +296,14 @@ def show_wordcloud(data, title, parameter):
     data: Column to visulalize (parameter)
     title: Title of the WorkCloud Visualized
   """
-    text = ' '.join(data['text'].astype(str).tolist())                 # Converting Summary column into list
-    stopwords = set(wordcloud.STOPWORDS)                                  # instantiate the stopwords from wordcloud
+  text = ' '.join(data['text'].astype(str).tolist())                 # Converting Summary column into list
+   stopwords = set(wordcloud.STOPWORDS)                                  # instantiate the stopwords from wordcloud
     
-    fig_wordcloud = wordcloud.WordCloud(stopwords=stopwords,background_color='white',          # Setting the different parameter of stopwords
+  fig_wordcloud = wordcloud.WordCloud(stopwords=stopwords,background_color='white',          # Setting the different parameter of stopwords
                     colormap='viridis', width=800, height=600).generate(text)
     
-    plt.figure(figsize=(14,11), frameon=True)                             
-    plt.imshow(fig_wordcloud)  
-    plt.axis('off')
-    plt.title(title, fontsize=30)
-    plt.show()
+  plt.figure(figsize=(14,11), frameon=True)                             
+  plt.imshow(fig_wordcloud)  
+  plt.axis('off')
+  plt.title(title, fontsize=30)
+  plt.show()
