@@ -307,3 +307,21 @@ def show_wordcloud(data, title, parameter):
   plt.axis('off')
   plt.title(title, fontsize=30)
   plt.show()
+  
+#Creating an Evaluation Function y_true vs y_pred...
+from sklearn.metrics import accuracy_score, precision_recall_fscore_support
+
+def calculate_results_custom(y_true, y_pred):
+  """
+  Calculates model accuracy, recall and F1 Score of Binary Classification Model.
+  """
+
+  # Calculate Model Accuracy
+  model_accuracy = accuracy_score(y_true, y_pred) * 100
+  # Calculate F-Score - weighted average used for Binary Classification, MultiClass will be different
+  model_precision, model_recall, model_f1, _ = precision_recall_fscore_support(y_true, y_pred, average="weighted")
+  model_results = {"accuracy": model_accuracy,
+                   "precision":model_precision,
+                   "recall": model_recall,
+                   "F1-Score":model_f1}
+  return model_results
