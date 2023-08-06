@@ -296,7 +296,7 @@ def show_wordcloud(data, title, parameter):
     data: Column to visulalize (parameter)
     title: Title of the WorkCloud Visualized
   """
-  text = ' '.join(data[parameter].astype(str).tolist())                 # Converting Summary column into list
+  text = ' '.join(data['text'].astype(str).tolist())                 # Converting Summary column into list
   stopwords = set(wordcloud.STOPWORDS)                                  # instantiate the stopwords from wordcloud
   
   fig_wordcloud = wordcloud.WordCloud(stopwords=stopwords,background_color='white',          # Setting the different parameter of stopwords
