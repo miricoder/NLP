@@ -2,6 +2,7 @@
 ### Storing them here so they're easily accessible.
 
 import tensorflow as tf
+import wordcloud
 
 # Create a function to import an image and resize it to be able to be used with our model
 def load_and_prep_image(filename, img_shape=224, scale=True):
@@ -286,3 +287,23 @@ def calculate_results(y_true, y_pred):
                   "recall": model_recall,
                   "f1": model_f1}
   return model_results
+
+def show_wordcloud(data, title, parameter):
+  """
+  For Visualizing Word Frequcueny in WordCloud
+
+  Args:
+    data: Column to visulalize (parameter)
+    title: Title of the WorkCloud Visualized
+  """
+    text = ' '.join(data['text'].astype(str).tolist())                 # Converting Summary column into list
+    stopwords = set(wordcloud.STOPWORDS)                                  # instantiate the stopwords from wordcloud
+    
+    fig_wordcloud = wordcloud.WordCloud(stopwords=stopwords,background_color='white',          # Setting the different parameter of stopwords
+                    colormap='viridis', width=800, height=600).generate(text)
+    
+    plt.figure(figsize=(14,11), frameon=True)                             
+    plt.imshow(fig_wordcloud)  
+    plt.axis('off')
+    plt.title(title, fontsize=30)
+    plt.show()
