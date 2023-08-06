@@ -289,13 +289,13 @@ def calculate_results(y_true, y_pred):
   return model_results
 
 def show_wordcloud(data, title, parameter):
-"""
-For Visualizing Word Frequcueny in WordCloud
+  """
+  For Visualizing Word Frequcueny in WordCloud
 
-Args:
-  data: Column to visulalize (parameter)
-  title: Title of the WorkCloud Visualized
-"""
+  Args:
+    data: Column to visulalize (parameter)
+    title: Title of the WorkCloud Visualized
+  """
   text = ' '.join(data['text'].astype(str).tolist())                 # Converting Summary column into list
   stopwords = set(wordcloud.STOPWORDS)                                  # instantiate the stopwords from wordcloud
   
